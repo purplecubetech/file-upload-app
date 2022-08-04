@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="display.css">
+</head>
+<body>
+    <div class="container">
+        <div id="imgBox"></div>
+        <div id="previewText"></div>
+        <textarea placeholder="Add Caption" id="textBox"></textarea>
+        <input type="file" accept="image/*" name="image" id="myFile" onchange="loadFile(event)">
+        <label for="myFile"><img src="img/images.png" alt="upload icon" id="icon"></label>
+    </div>
+    <script>
+        const textBox = document.getElementById("textBox");
+        textBox.onkeyup = textBox.onkeypress = function() {
+            document.getElementById("previewText").innerHTML = this.value;
+        }
+
+        imgBox = document.getElementById("imgBox");
+        const loadFile = function(event) {
+            imgBox.style.backgroundImage = "url(" +URL.createObjectURL(event.target.files[0]) + ")";
+        }
+    </script>
+</body>
+</html>
